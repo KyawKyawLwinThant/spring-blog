@@ -24,6 +24,8 @@ public class BlogSpringApplication {
 
   public static void main(String[] args) {
     SpringApplication.run(BlogSpringApplication.class, args);
+
+    System.out.println("Hello Git!");
   }
 
   @Bean @Profile("dev")
