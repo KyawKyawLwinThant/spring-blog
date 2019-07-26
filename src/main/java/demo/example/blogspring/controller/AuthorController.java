@@ -9,6 +9,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.validation.Valid;
+
 @Controller
 public class AuthorController {
   @Autowired
@@ -23,7 +25,7 @@ public class AuthorController {
   }
 
   @PostMapping("/author")
-  public String process(Author author, BindingResult result){
+  public String process(@Valid Author author, BindingResult result){
     if(result.hasErrors()){
       return "authorForm";
     }

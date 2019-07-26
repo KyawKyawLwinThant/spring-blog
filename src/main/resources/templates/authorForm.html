@@ -1,10 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/master.html">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
 
+    <div layout:fragment="context">
+        <div class="container">
+
+
+        <form action="#" th:action="@{/author}" th:object="${author}" method="post">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" th:field="*{name}" id="name" class="form-control">
+                <small th:if="${#fields.errors('name')}"
+                       th:errors="*{name}" class="form-text text-danger"></small>
+            </div>
+
+
+            <div class="form-group">
+                <label for="dataofbirth">Date Of Birth</label>
+                <input type="date" th:field="*{dateOfBirth}" id="dataofbirth" class="form-control">
+                <small th:if="${#fields.errors('dateOfBirth')}"
+                       th:errors="*{dateOfBirth}" class="form-text text-danger"></small>
+            </div>
+
+            <div class="form-group">
+                <label for="intrested">Interested</label>
+                <input type="text" th:field="*{interested}" id="intrested" class="form-control">
+                <small th:if="${#fields.errors('interested')}"
+                       th:errors="*{interested}" class="form-text text-danger"></small>
+            </div>
+
+
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <select class="form-control" th:field="*{gender}" name="gender" id="gender">
+                    <option th:each="gen:${T(demo.example.blogspring.model.Gender).values()}"
+                    th:value="${{gen}}" th:text="${gen}"></option>
+                </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+        </div>
+    </div>
 </body>
 </html>
