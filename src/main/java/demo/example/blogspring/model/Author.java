@@ -17,7 +17,7 @@ public class Author  implements Serializable {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @NotEmpty(message = "Name cannot be empty!")
+  @NotEmpty(message = "{author.name.validator.msg}")
   private String name;
   @Past(message = "date of birth must be past.")
   @DateTimeFormat(pattern = "yyyy-MM-dd")

@@ -11,11 +11,14 @@
     <div layout:fragment="context">
         <div class="container">
 
+            <a href="#" th:href="@{'/author/?lang=us'}" >US</a> | <a href="#" th:href="@{'/author/?lang=de'}">German</a>
 
-        <form action="#" th:action="@{/author}" th:object="${author}" method="post">
+            |<a href="#" th:href="@{'/author/?lang=fr'}">French</a> | <a href="#" th:href="@{'/author/?lang=ja'}">Myanmar</a>
+
+            <form action="#" th:action="@{/author}" th:object="${author}" method="post">
 
             <div class="form-group">
-                <label for="name">Name</label>
+                <label for="name" th:text="#{author.name}"></label>
                 <input type="text" th:field="*{name}" id="name" class="form-control">
                 <small th:if="${#fields.errors('name')}"
                        th:errors="*{name}" class="form-text text-danger"></small>
