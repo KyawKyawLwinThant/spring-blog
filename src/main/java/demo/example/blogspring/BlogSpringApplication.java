@@ -5,6 +5,7 @@ import demo.example.blogspring.model.Gender;
 import demo.example.blogspring.model.Post;
 import demo.example.blogspring.repository.AuthorRepository;
 import demo.example.blogspring.repository.PostRepository;
+import org.ocpsoft.prettytime.PrettyTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -26,6 +27,11 @@ public class BlogSpringApplication {
     SpringApplication.run(BlogSpringApplication.class, args);
 
     System.out.println("Hello Git!");
+  }
+
+  @Bean
+  public PrettyTime prettyTime(){
+    return new PrettyTime();
   }
 
   @Bean @Profile("dev")
