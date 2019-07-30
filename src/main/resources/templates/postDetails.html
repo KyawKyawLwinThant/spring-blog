@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/master.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <div layout:fragment="context">
+        <div class="container">
+
+            <h3 class="text-center" th:text="${post.tag}"></h3>
+
+            <p th:text="${post.body}"></p>
+
+            <div class="row">
+                <div class="col-md-10"></div>
+                <div class="col-md-2">
+                    By : &nbsp;<p th:text="${post.author.name}"></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/master.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <div layout:fragment="context">
+        <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Tag</th>
+                <th>Post Body</th>
+                <th>Last Updated</th>
+                <th>Author</th>
+                <th>Details</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            <tr th:each="pos : ${allposts}">
+                <td th:text="${pos.tag}"></td>
+                <td th:text="${#strings.substring(pos.body,0,10)}"></td>
+                <td th:text="${pos.lastUpdated}"></td>
+                <td th:text="${pos.author.name}"></td>
+                <td><a href="#" th:href="@{'/posts/details/'+${pos.id}}"
+                       class="btn btn-primary">Details</a></td>
+            </tr>
+            </tbody>
+        </table>
+        </div>
+    </div>
+</body>
+</html>
