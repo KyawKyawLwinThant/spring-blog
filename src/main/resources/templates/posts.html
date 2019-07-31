@@ -17,6 +17,7 @@
                 <th>Last Updated</th>
                 <th>Author</th>
                 <th>Details</th>
+                <th>Update</th>
             </tr>
             </thead>
 
@@ -24,10 +25,12 @@
             <tr th:each="pos : ${allposts}">
                 <td th:text="${pos.tag}"></td>
                 <td th:text="${#strings.substring(pos.body,0,10)}"></td>
-                <td th:text="${pos.lastUpdated + ' '+ pos.showPrettyTime()}">  </td>
+                <td th:text="${pos.lastUpdated + '  **   '+ pos.showPrettyTime()}"></td>
                 <td th:text="${pos.author.name}"></td>
                 <td><a href="#" th:href="@{'/posts/details/'+${pos.id}}"
                        class="btn btn-primary">Details</a></td>
+                <td><a href="#" class="btn btn-primary"
+                       th:href="@{'/posts/update/'+${pos.id}}">Update</a></td>
             </tr>
             </tbody>
         </table>

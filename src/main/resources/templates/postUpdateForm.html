@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/master.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div layout:fragment="context">
+    <div class="container">
+        <form action="#" th:object="${post}" th:action="@{/posts/update}" method="post">
+
+            <div class="form-group">
+                <label for="tag">Tag</label>
+                <input type="text"
+                       th:field="*{tag}"
+                       class="form-control" name="" id="tag" aria-describedby="helpId" placeholder="">
+            </div>
+
+            <div class="form-group">
+                <label for="body">Body</label>
+                <input type="text"
+                       th:field="*{body}"
+                       class="form-control" name="" id="body" aria-describedby="helpId" placeholder="">
+
+            </div>
+
+            <div class="form-group">
+                <label for="lastupdated">Last Updated</label>
+                <input type="date"
+                       th:field="*{lastUpdated}"
+                       class="form-control" name="" id="lastupdated" aria-describedby="helpId" placeholder="">
+
+            </div>
+
+            <div class="form-group">
+                <label for="author">Author</label>
+                <select class="form-control" th:field="*{author}" name="" id="author">
+                    <option th:each="au :${authors}"
+                            th:text="${au.name}" th:value="${au.id}"></option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

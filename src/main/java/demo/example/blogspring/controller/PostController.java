@@ -51,4 +51,17 @@ public class PostController {
     return "postDetails";
   }
 
+  @GetMapping("/posts/update/{id}")
+  public String updatePost(@PathVariable("id") long id,Model model){
+    this.updatedId=id;
+    model.addAttribute("post",postService.findById(id));
+    model.addAttribute("authors",authorService.findAll());
+    return "postUpdateForm";
+  }
+  @PostMapping("/posts/update")
+  public String processPost(Post post){
+    postService.update(updatedId,post);
+    return "redirect:/posts";
+  }
+  private Long updatedId;
 }
