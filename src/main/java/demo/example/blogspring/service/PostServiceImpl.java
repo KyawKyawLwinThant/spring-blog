@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 @Service
-public class PostServiceImpl implements PostService {
+      public class PostServiceImpl implements PostService {
 
   @Autowired
   private PostRepository postRepository;
@@ -21,7 +22,7 @@ public class PostServiceImpl implements PostService {
 
   @Override
   public Post findById(Long id) {
-    return postRepository.getOne(id);
+    return postRepository.findById(id).orElseThrow(()->new EntityNotFoundException(id + " Not Found!"));
   }
 
   @Override
@@ -37,5 +38,10 @@ public class PostServiceImpl implements PostService {
         post.setBody(postUpdate.getBody());
         post.setLastUpdated(postUpdate.getLastUpdated());
         post.setTag(postUpdate.getTag());
+  }
+
+  @Override
+  public void delete(Long id) {
+       postRepository.deleteById(id);
   }
 }

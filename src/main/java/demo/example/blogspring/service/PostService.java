@@ -13,4 +13,6 @@ public interface PostService {
   List<Post> findAll();
 
   void update(Long id,Post post);
+
+  void delete(Long id);
 }

@@ -9,6 +9,15 @@
 <body>
     <div layout:fragment="context">
         <div class="container">
+
+            <div class="alert alert-success" role="alert" th:if="${success}">
+                You successfully update!
+            </div>
+
+            <div class="alert alert-success" role="alert" th:if="${insert}">
+                New Post successfully added.
+            </div>
+
         <table class="table">
             <thead>
             <tr>
@@ -18,6 +27,7 @@
                 <th>Author</th>
                 <th>Details</th>
                 <th>Update</th>
+                <th>Delete</th>
             </tr>
             </thead>
 
@@ -31,6 +41,7 @@
                        class="btn btn-primary">Details</a></td>
                 <td><a href="#" class="btn btn-primary"
                        th:href="@{'/posts/update/'+${pos.id}}">Update</a></td>
+                <td><a href="#" class="btn btn-primary" th:href="@{'/posts/delete/'+${pos.id}}">Delete</a></td>
             </tr>
             </tbody>
         </table>

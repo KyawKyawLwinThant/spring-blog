@@ -9,6 +9,9 @@
 <body>
     <div layout:fragment="context">
         <div class="container">
+            <div class="alert alert-success" role="alert" th:if="${success}">
+                New Author successfully added.
+            </div>
             <table class="table">
                 <thead>
                 <tr>
