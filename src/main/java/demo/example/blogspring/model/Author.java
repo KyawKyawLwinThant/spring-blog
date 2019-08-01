@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Past;
 import java.io.Serializable;
+import java.lang.annotation.Retention;
 import java.time.LocalDate;
 
 @Entity

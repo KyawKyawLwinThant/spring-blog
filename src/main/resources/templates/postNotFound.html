@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout/master.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+    <div layout:fragment="context">
+        <div class="contaier">
+        <h3 class="text-center display-3 text-danger" th:text="${message}">
+
+        </h3>
+        <p class="text-muted display-4" th:text="${exception}"></p>
+        <p class="text-muted display-4"  th:text="${url}"></p>
+        </div>
+    </div>
+</body>
+</html>

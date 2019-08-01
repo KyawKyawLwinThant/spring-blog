@@ -22,7 +22,7 @@ import java.util.List;
 
   @Override
   public Post findById(Long id) {
-    return postRepository.findById(id).orElseThrow(()->new EntityNotFoundException(id + " Not Found!"));
+    return postRepository.findById(id).orElseThrow(()->new EntityNotFoundException(id+" Not Found."));
   }
 
   @Override

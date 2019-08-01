@@ -4,18 +4,22 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.LocaleResolver;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 import javax.persistence.EntityNotFoundException;
+import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.Locale;
 
@@ -58,10 +62,26 @@ public class WebConfig implements WebMvcConfigurer {
   }
 
 
-  @ExceptionHandler(EntityNotFoundException.class)
+ /* @ExceptionHandler(EntityNotFoundException.class)
   public ResponseEntity<String> handleException(EntityNotFoundException ex){
     return new ResponseEntity<>(ex.getMessage(), HttpStatus.OK);
   }
+  */
+
+  @ExceptionHandler(EntityNotFoundException.class)
+  public ModelAndView handleNotFoundException(HttpServletRequest request
+          , EntityNotFoundException ex){
+    ModelAndView mv=new ModelAndView();
+    mv.addObject("message",ex.getMessage());
+    mv.addObject("exception",ex);
+    mv.addObject("url",request.getRequestURL());
+    mv.setViewName("postNotFound");
+    return mv;
+  }
 
 
+  @Override
+  public void addViewControllers(ViewControllerRegistry registry) {
+      registry.addRedirectViewController("/","/posts");
+  }
 }
