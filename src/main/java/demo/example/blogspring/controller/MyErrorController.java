@@ -1,5 +1,7 @@
 package demo.example.blogspring.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
@@ -13,9 +15,12 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class MyErrorController implements ErrorController {
 
+  private Logger logger= LoggerFactory.getLogger(MyErrorController.class);
+
   @RequestMapping("/error")
   public String handleError(HttpServletRequest request, Model model) {
     Object status=request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
+    logger.info(" "+ status);
     if(status!=null){
       Integer statusCode=Integer.valueOf(status.toString());
       if(statusCode == HttpStatus.NOT_FOUND.value()){

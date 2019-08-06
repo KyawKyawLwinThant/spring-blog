@@ -1,5 +1,7 @@
 package demo.example.blogspring.config;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,6 +28,9 @@ import java.util.Locale;
 @Configuration
 @ControllerAdvice
 public class WebConfig implements WebMvcConfigurer {
+
+  private static Logger logger= LoggerFactory
+          .getLogger(WebConfig.class);
 
 
   @Bean
@@ -71,6 +76,7 @@ public class WebConfig implements WebMvcConfigurer {
   @ExceptionHandler(EntityNotFoundException.class)
   public ModelAndView handleNotFoundException(HttpServletRequest request
           , EntityNotFoundException ex){
+    logger.info("Exception type:"+ ex);
     ModelAndView mv=new ModelAndView();
     mv.addObject("message",ex.getMessage());
     mv.addObject("exception",ex);
