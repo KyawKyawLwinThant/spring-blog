@@ -29,34 +29,34 @@ public class BlogSpringApplication {
     System.out.println("Hello Git!");
   }
 
-  @Bean
-  public PrettyTime prettyTime(){
-    return new PrettyTime();
-  }
-
-  @Bean @Profile("dev")
-  public CommandLineRunner runner(AuthorRepository authorRepository
-          , PostRepository postRepository){
-    return args -> {
-      Author author1
-              =new Author("Thaw Thaw", LocalDate.of(2000,3,27),"Horror", Gender.MALE);
-
-
-      Post p1=new Post("afdafasfds","dfadfdafdsfdsafdsaf",LocalDate.now());
-      Post p2=new Post("afdafasfds","dfadfdafdsfdsafdsaf",LocalDate.now());
-      Post p3=new Post("afdafasfds","dfadfdafdsfdsafdsaf",LocalDate.now());
-
-
-      p1.setAuthor(author1);
-      p2.setAuthor(author1);
-      p3.setAuthor(author1);
-      authorRepository.save(author1);
-      postRepository.save(p1);
-      postRepository.save(p2);
-      postRepository.save(p3);
-
-      logger.info("successful create.");
-    };
-  }
+//  @Bean
+//  public PrettyTime prettyTime(){
+//    return new PrettyTime();
+//  }
+//
+//          , PostRepository postRepository){
+//  @Bean @Profile("dev")
+//    return args -> {
+//      Author author1
+//              =new Author("Thaw Thaw", LocalDate.of(2000,3,27),"Horror", Gender.MALE);
+//
+//
+//      Post p1=new Post("afdafasfds","dfadfdafdsfdsafdsaf",LocalDate.now());
+//      Post p2=new Post("afdafasfds","dfadfdafdsfdsafdsaf",LocalDate.now());
+//      Post p3=new Post("afdafasfds","dfadfdafdsfdsafdsaf",LocalDate.now());
+//
+//
+//      p1.setAuthor(author1);
+//      p2.setAuthor(author1);
+//      p3.setAuthor(author1);
+//      authorRepository.save(author1);
+//      postRepository.save(p1);
+//      postRepository.save(p2);
+//      postRepository.save(p3);
+//
+//      logger.info("successful create.");
+//      public CommandLineRunner runner(AuthorRepository authorRepository
+//    };
+//  }
 
 }

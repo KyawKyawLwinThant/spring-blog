@@ -9,6 +9,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -83,6 +84,13 @@ public class WebConfig implements WebMvcConfigurer {
     mv.addObject("url",request.getRequestURL());
     mv.setViewName("postNotFound");
     return mv;
+  }
+
+  @Bean
+  public BCryptPasswordEncoder bCryptPasswordEncoder(){
+    BCryptPasswordEncoder bCryptPasswordEncoder
+            =new BCryptPasswordEncoder();
+    return bCryptPasswordEncoder;
   }
 
 
