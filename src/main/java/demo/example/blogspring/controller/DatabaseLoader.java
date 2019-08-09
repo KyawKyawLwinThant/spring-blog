@@ -29,11 +29,11 @@ public class DatabaseLoader implements CommandLineRunner {
     Role user=new Role("ROLE_USER");
 
 
-    String secretAdminUser="{bcrypt}"+bCryptPasswordEncoder.encode("kyaw");
+    String secretAdminUser=bCryptPasswordEncoder.encode("kyaw");
     User adminUser=new User("kyaw","admin",secretAdminUser,"adminmail@gamil.com");
 
 
-    String secretUser="{bcrypt}"+bCryptPasswordEncoder.encode("thaw");
+    String secretUser=bCryptPasswordEncoder.encode("thaw");
     User userUser=new User("thaw","user",secretUser,"usermail@gmail.com");
 
     //mapping
@@ -43,11 +43,11 @@ public class DatabaseLoader implements CommandLineRunner {
     userUser.addRole(user);
     user.getUsers().add(userUser);
 
-//    roleRepository.save(admin);
-//    roleRepository.save(user);
-//
-//    userRepository.save(adminUser);
-//    userRepository.save(userUser);
+    //roleRepository.save(admin);
+    //roleRepository.save(user);
+
+   //userRepository.save(adminUser);
+   // userRepository.save(userUser);
 
 
   }

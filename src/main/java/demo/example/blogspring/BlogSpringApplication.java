@@ -29,10 +29,10 @@ public class BlogSpringApplication {
     System.out.println("Hello Git!");
   }
 
-//  @Bean
-//  public PrettyTime prettyTime(){
-//    return new PrettyTime();
-//  }
+  @Bean
+  public PrettyTime prettyTime(){
+    return new PrettyTime();
+  }
 //
 //          , PostRepository postRepository){
 //  @Bean @Profile("dev")
