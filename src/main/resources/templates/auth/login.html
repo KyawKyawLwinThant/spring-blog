@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="./layout/master.html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+    <div layout:fragment="navigation">
+
+        <nav class="navbar bg-dark navbar-expand-lg navbar-dark fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <i class="fa fa-leaf" aria-hidden="true"></i>
+                    Blog
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarResponsive">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" th:href="@{/}">
+                                <i class="fas fa-home" aria-hidden="true"></i> Home
+                            </a>
+                        </li>
+
+
+
+
+                        <!-- if user is not signed in -->
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
+                            <a class="nav-link" href=login.html>
+                                <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Sign In</a>
+                        </li>
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
+                            <a class="nav-link" href="register.html">
+                                <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+    </div>
+
+
+
+
+<div layout:fragment="context">
+
+
+
+    <!-- login -->
+    <form class="form-horizontal" role="form" method="POST" th:action="@{/login}">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h2>Please Login</h2>
+                <hr>
+                <div class="alert alert-danger" th:if="${param.error != null}">
+                    Invalid username and password.
+                </div>
+                <div class="alert alert-success" th:if="${param.logout != null}">
+                    You have been logged out.
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-group has-danger">
+                    <label class="sr-only" for="email">E-Mail Address</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+                        <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required autofocus>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="sr-only" for="password">Password</label>
+                    <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+                        <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+                        <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6" style="padding-top: .35rem">
+                <div class="form-check mb-2 mr-sm-2 mb-sm-0">
+                    <label class="form-check-label">
+                        <input id="remember-me" name="remember-me" class="form-check-input" type="checkbox" >
+                        <span style="padding-bottom: .15rem">Remember me</span>
+                    </label>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row" style="padding-top: 1rem">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <button type="submit" class="btn btn-success"><i class="fas fa-sign-in-alt"></i> Login</button>
+                <!-- <a class="btn btn-link" href="forgotPassword.html">Forgot Your Password?</a> -->
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

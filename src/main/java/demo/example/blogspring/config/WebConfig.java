@@ -21,6 +21,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
@@ -92,6 +93,12 @@ public class WebConfig implements WebMvcConfigurer {
     BCryptPasswordEncoder bCryptPasswordEncoder
             =new BCryptPasswordEncoder();
     return bCryptPasswordEncoder;
+  }
+
+
+  @Bean
+  public SpringSecurityDialect securityDialect() {
+    return new SpringSecurityDialect();
   }
 
 

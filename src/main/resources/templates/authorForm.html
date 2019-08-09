@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="layout/master.html">
 <head>
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
 <body>
+
+    <div layout:fragment="navigation">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+            <a class="navbar-brand" href="#">Navbar</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" th:href="@{/posts}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/author}">Author Form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/authors}">Authors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" th:href="@{/post}">Post Form</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <form method="POST" th:action="@{/logout}">
+                            <button class="nav-link bg-dark text-light"><i class="fa fa-sign-out-alt" aria-hidden="true"></i> Sign Out</button>
+                        </form>
+                    </li>
+                    <li class="nav-item" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link" href=login.html>
+                            <i class="fa fa-sign-in-alt" aria-hidden="true"></i> Sign In</a>
+                    </li>
+                    <li class="nav-item" sec:authorize="!isAuthenticated()">
+                        <a class="nav-link" href="register.html">
+                            <i class="fa fa-user-plus" aria-hidden="true"></i> Register</a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
 
     <div layout:fragment="context">
         <div class="container">
