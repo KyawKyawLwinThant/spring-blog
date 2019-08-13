@@ -43,10 +43,10 @@ public class DatabaseLoader implements CommandLineRunner {
     userUser.addRole(user);
     user.getUsers().add(userUser);
 
-    //roleRepository.save(admin);
     //roleRepository.save(user);
+   // roleRepository.save(admin);
 
-   //userRepository.save(adminUser);
+    //userRepository.save(adminUser);
    // userRepository.save(userUser);
 
 
