@@ -1,9 +1,7 @@
 package demo.example.blogspring.model;
 
+import demo.example.blogspring.service.PasswordNotSame;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import net.bytebuddy.implementation.bind.annotation.Empty;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -70,6 +68,11 @@ public class User implements UserDetails,Serializable  {
   @Override
   public String getUsername() {
     return email;
+  }
+
+  @Override
+  public String getPassword(){
+    return password;
   }
 
   @Override

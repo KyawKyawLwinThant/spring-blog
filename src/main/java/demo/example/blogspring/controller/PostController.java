@@ -50,6 +50,7 @@ public class PostController {
     model.addAttribute("allposts",postService.findAll());
     model.addAttribute("success",model.containsAttribute("success"));
     model.addAttribute("insert",model.containsAttribute("insert"));
+    model.addAttribute("register",model.containsAttribute("register"));
     return "posts";
   }
   @GetMapping("/posts/details/{id}")

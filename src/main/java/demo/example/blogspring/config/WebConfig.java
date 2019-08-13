@@ -25,6 +25,7 @@ import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 import javax.persistence.EntityNotFoundException;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.ConstraintViolationException;
 import java.io.IOException;
 import java.util.Locale;
 
@@ -76,7 +77,7 @@ public class WebConfig implements WebMvcConfigurer {
   }
   */
 
-  @ExceptionHandler(EntityNotFoundException.class)
+  @ExceptionHandler({EntityNotFoundException.class, ConstraintViolationException.class})
   public ModelAndView handleNotFoundException(HttpServletRequest request
           , Exception ex){
     logger.info("Exception type:"+ ex);
